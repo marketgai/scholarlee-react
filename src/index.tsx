@@ -2,27 +2,31 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 // import App from './App';
-import { Home, SignIn, Dashboard } from './components'
+import { Home, SignIn, Dashboard } from './components';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-
+import { Provider } from 'react-redux';
+import { store } from './redux/store';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <Switch>
-          <Route exact path='/'>
+    <Provider store={store}>
+      <Router>
+        <Switch>
+          <Route exact path="/">
             <Home title={'Home'} />
           </Route>
-          <Route path='/dashboard'>
+
+          <Route path="/dashboard">
             <Dashboard />
           </Route>
-          <Route path='/signin'>
+
+          <Route path="/signin">
             <SignIn />
           </Route>
-      </Switch>
-    </Router>
-    <Home title='scholar string' />
+        </Switch>
+      </Router>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
